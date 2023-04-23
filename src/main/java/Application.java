@@ -48,11 +48,24 @@ public class Application {
             System.out.println("Пол: " + employee.getAge());
         }
 
-        employeeDAO.updateEmployee(new Employee(8, "Jon", "Martinez", "male", 26, 8));
+        employeeDAO.updateEmployee(new Employee(6, "Jon", "Martinez", "male", 26, 8));
         List<Employee> updateEmployee = employeeDAO.getAllEmployee();
-        for (Employee employee : updateEmployee) {
+        for (Employee employee: updateEmployee) {
             System.out.println(employee);
         }
+
+        employeeDAO.createEmployee(new Employee(9,"Zlata","Pock","female",34,3));
+        for (Employee employee: employees) {
+            System.out.println(employee);
+        }
+
+        System.out.println(employeeDAO.getEmployeeById(2));
+
+        employeeDAO.deleteEmployee(7);
+        for (Employee employee: employees) {
+            System.out.println(employee);
+        }
+
 
     }
 }
