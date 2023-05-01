@@ -16,20 +16,19 @@ public class Employee {
     @Column (name = "age", nullable = false)
     private int age;
     @Column (name = "city_id")
-    private int city;
+    private Integer city;
 
 
+    public Employee() {
+    }
 
-    public Employee(int id, String firstName, String lastName, String gender, int age, int city) {
+    public Employee(int id, String firstName, String lastName, String gender, int age, Integer city) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
         this.city = city;
-    }
-
-    public Employee() {
     }
 
     public int getId() {
@@ -72,11 +71,11 @@ public class Employee {
         this.age = age;
     }
 
-    public int getCity() {
+    public Integer getCity() {
         return city;
     }
 
-    public void setCity(int city) {
+    public void setCity(Integer city) {
         this.city = city;
     }
 
