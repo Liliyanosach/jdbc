@@ -1,19 +1,35 @@
+import javax.persistence.*;
+
+@Entity
+@Table(name = "employee")
 public class Employee {
+    @Id
+    @Column (name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column (name = "first_name", length = 50, nullable = false)
     private String firstName;
+    @Column (name = "last_name", length = 50, nullable = false)
     private String lastName;
+    @Column (name = "gender", length = 6, nullable = false)
     private String gender;
+    @Column (name = "age", nullable = false)
     private int age;
-    private int cityId;
+    @Column (name = "city_id")
+    private int city;
 
 
-    public Employee(int id, String firstName, String lastName, String gender, int age, int cityId) {
+
+    public Employee(int id, String firstName, String lastName, String gender, int age, int city) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
-        this.cityId = cityId;
+        this.city = city;
+    }
+
+    public Employee() {
     }
 
     public int getId() {
@@ -56,12 +72,12 @@ public class Employee {
         this.age = age;
     }
 
-    public int getCityId() {
-        return cityId;
+    public int getCity() {
+        return city;
     }
 
-    public void setCityId(int cityId) {
-        this.cityId = cityId;
+    public void setCity(int city) {
+        this.city = city;
     }
 
     @Override
@@ -72,7 +88,7 @@ public class Employee {
                 ", lastName='" + lastName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", age=" + age +
-                ", cityId=" + cityId +
+                ", cityId=" + city +
                 '}';
     }
 }
