@@ -1,29 +1,28 @@
 import javax.persistence.*;
+import java.util.Objects;
 
 @Entity
 @Table(name = "employee")
 public class Employee {
     @Id
-    @Column (name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Column (name = "first_name", length = 50, nullable = false)
+    @Column (name = "first_name")
     private String firstName;
-    @Column (name = "last_name", length = 50, nullable = false)
+    @Column (name = "last_name")
     private String lastName;
-    @Column (name = "gender", length = 6, nullable = false)
+
     private String gender;
-    @Column (name = "age", nullable = false)
     private int age;
-    @Column (name = "city_id")
-    private Integer city;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "city_id")
+    private City city;
 
 
     public Employee() {
     }
 
-    public Employee(int id, String firstName, String lastName, String gender, int age, Integer city) {
-        this.id = id;
+    public Employee(String firstName, String lastName, String gender, int age, City city) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
@@ -71,23 +70,24 @@ public class Employee {
         this.age = age;
     }
 
-    public Integer getCity() {
+    public City getCity() {
         return city;
     }
 
-    public void setCity(Integer city) {
+    public void setCity(City city) {
         this.city = city;
     }
 
     @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", gender='" + gender + '\'' +
-                ", age=" + age +
-                ", cityId=" + city +
-                '}';
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, gender, age, city);
     }
 }
