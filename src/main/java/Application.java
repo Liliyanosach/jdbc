@@ -1,17 +1,24 @@
+import java.util.List;
+
 public class Application {
     public static void main(String[] args) {
 
-        Employee employee = new Employee(15, "Ivan", "Ivanov", "male", 35, 3);
-        EmployeeDAO employeeDao = new EmployeeDAOImpl();
-        employeeDao.getAllEmployee().forEach(System.out::println);
-        Integer employeeId = employeeDao.addEmployee(employee);
-        System.out.println(employeeDao.getAllEmployee());
-        System.out.println();
-        employeeDao.updateEmployee(employee, employeeId);
-        employeeDao.deleteEmployee(employee);
-        System.out.println(employeeDao.getEmployeeById(5));
+        CityDAO cityDAO = new CityDAOImpl();
+        EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 
+        City city = new City("Tomsk");
+        cityDAO.addCity(city);
 
+        System.out.println("Города " + cityDAO.getAllCity().contains(city));
+
+        Employee employee1 = new Employee("Petr","Petrov","male",32,city);
+        Employee employee2 = new Employee("Irma","Trush", "female",18,city);
+
+        city.setEmployees(List.of(employee1,employee2));
+
+        City updateCity = cityDAO.updateCity(city);
+        System.out.println(employeeDAO.getAllEmployee().containsAll(updateCity.getEmployees()));
+        cityDAO.getCityById(updateCity.getCityId());
     }
 
 
