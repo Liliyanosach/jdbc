@@ -1,8 +1,7 @@
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "city")
 public class City {
     @Id
     @Column(name = "city_id")
@@ -14,6 +13,9 @@ public class City {
     public City(int cityId, String cityName) {
         this.cityId = cityId;
         this.cityName = cityName;
+    }
+
+    public City() {
     }
 
     public int getCityId() {

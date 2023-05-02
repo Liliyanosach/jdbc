@@ -1,12 +1,4 @@
 /.idea/
 /.iml/
-/.target/
-/target/classes/Application.class
-/target/classes/City.class
-/target/classes/Employee.class
-/target/classes/EmployeeDAO.class
-/target/classes/EmployeeDAOImpl.class
-/target/classes/hibernate.cfg.xml
-/target/classes/HibernateSessionFactoryUtil.class
-/jdbc.iml
-/target/classes/META-INF/persistence.xml
+/target/
+
